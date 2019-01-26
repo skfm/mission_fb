@@ -1,0 +1,42 @@
+<br>
+
+<div class="center">
+  <h1>新規登録</h1>
+</div>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this @user from being saved:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="card card-container">
+  <%= form_with(model: @user, local: true) do |f| %>  
+    <%= f.label :名前 %>
+    <%= f.text_field :name, :class => 'field' %>
+    <br>
+    <br>
+    <%= f.label :メールアドレス %>
+    <%= f.email_field :email, :class => 'field' %>
+    <br>
+    <br>
+    <%= f.label :パスワード %>
+    <%= f.password_field :password, :class => 'field' %>
+    <br>
+    <br>
+    <%= f.label :パスワード（確認用） %>
+    <%= f.password_field :password_confirmation, :class => 'field' %>
+    <br>
+  　<br>
+  　<button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">
+  　   新規登録
+    </button>
+  <% end %>
+</div>
+
+<div class="clear"></div>

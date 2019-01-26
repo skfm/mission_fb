@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  template: template0
+
+development:
+  <<: *default
+  database: mission_fb_development
+
+test:
+  <<: *default
+  database: mission_fb_test
+
+production:
+  <<: *default
+  database: mission_fb_production
+  username: mission_fb
+  password: <%= ENV['MISSION_FB_DATABASE_PASSWORD'] %>
